@@ -1,0 +1,25 @@
+﻿@model IEnumerable<_17318905_HW04.Models.Organisation>
+
+@{
+    ViewBag.Title = "AdminPage";
+}
+
+<h2>AdminPage</h2>
+<div class="container fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <img src="~/Logos/Icons/Icon1.png" height="100" width="100" />
+            <button class="btn btn-primary" onclick="window.location.href='@Url.Action("ConservationIndex","Home")'">Conservation Organisations</button>
+        </div>
+        <div class="col-lg-4">
+            <img src="~/Logos/Icons/Icon2.jpg" height="100" width="100"/>
+            <button class="btn btn-primary" onclick="window.location.href='@Url.Action("CleanupIndex","Home")'">Cleanup Organisations</button>
+</div>
+        <div class="col-lg-4">
+            <img src="~/Logos/Icons/Icon3.png" height="100" width="100" />
+            <button class="btn btn-primary" onclick="window.location.href='@Url.Action("WildlifeIndex","Home")'">Wlidlife Organisations</button>
+</div>
+    </div>
+    
+</div>
+

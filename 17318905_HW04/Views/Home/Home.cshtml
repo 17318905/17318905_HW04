@@ -1,0 +1,166 @@
+﻿@model IEnumerable<_17318905_HW04.Models.Organisation>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<<header><h2>Welcome To Oceans4All</h2></header>
+<br/>
+<br/>
+<div class="container-fluid">
+    <span> img src="~/Logos/Carousel/Preservation1.jpg"</span>
+</div>
+<aside class="text-center bg-light">
+    <div class="container px-5">
+        <div class="row justify-content-center">
+            <div class="col-xl-8">
+                <div class="h2 flex-lg-shrink-1 text-black-50 mb-4">
+                    Oceans4All is a partner to several Ocean protection and conservation organisaations<br/>
+                    We partake not only in cleanups but also projects bringing new and innovative technologies to help make the ocean a cleaner and safer place for both people and animals.
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<p>
+    @*@Html.ActionLink("Add Conservation Organisation", "AddOrgConservationToGallery")
+    @Html.ActionLink("Add Ocean Cleanup Organisation", "AddOrgCleanupToGallery")
+    @Html.ActionLink("Add Conservation Organisation", "AddOrgWildlifeToGallery")*@
+
+</p>
+
+
+<h1> Ocean Conservation Organisations</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.Where(x => x.Orgtype == "Conservation"))
+        {
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="~/Logos/OrgLogo/Conservation1.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">This organnisation is supported by @item._Support.</p>
+                            <p class="card-text"><small class="text-muted">Established in @item.YearEstablished</small></p>
+
+                            <button class="btn btn-primary" style="border-radius: 20px !important" data-toggle="modal" data-target="#exampleModal-@item.ID">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<h1> Ocean Cleanup Organisations</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.Where(x => x.Orgtype == "Cleanup"))
+        {
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="~/Logos/OrgLogo/Cleanup1.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">This organnisation is supported by @item._Support.</p>
+                            <p class="card-text"><small class="text-muted">Established in @item.YearEstablished</small></p>
+                            <button class="btn btn-success" style="border-radius: 20px !important" data-toggle="modal" data-target="#exampleModal-@item.ID">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<h1> Marine Wildlife Preservation Organisations</h1>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.Where(x => x.Orgtype == "Wildlife"))
+        {
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="~/Logos/OrgLogo/Preservation2.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">This organnisation is supported by @item._Support.</p>
+                            <p class="card-text"><small class="text-muted">Established in @item.YearEstablished</small></p>
+                            <button class="btn btn-secondary" style="border-radius: 20px !important" data-toggle="modal" data-target="#exampleModal-@item.ID">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!--Modal-->
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="exampleModal-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLabel">@item.Name</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h4>Organisation description</h4><br />
+                    <hr />
+                    <h5>@item.OrgDescription()</h5>
+                    <br />
+                    
+                </div>
+                <div class="modal-footer">
+                    <p>@item.ResponseDelay()</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<footer>
+   @*// Grid
+    Bootstrap Grid System*@
+    <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Use Case 1</h4>
+                    <img src="~/Logos/UseCase/UseCase1.png" height="380" width="350" />
+                </div>
+                <div class="col-lg-6">
+                    <h4>Use Case 2</h4>
+                    <img src="~/Logos/UseCase/UseCase2.png" height="380" width="350" />
+                </div>
+                <div class="col-lg-6">
+                    <h4>Use Case 3</h4>
+                    <img src="~/Logos/UseCase/UseCase3.png" height="380" width="350" />
+                </div>
+                <div class="col-lg-6">
+                    <h4>Use Case 4</h4>
+                    <img src="~/Logos/UseCase/UseCase4.png" height="380" width="350" />
+                </div>
+            </div>
+        </div>
+</footer>
+
+<div class="Container-fluid">
+    <h3>Class Diagram:</h3>
+    <img src="~/Logos/ClassDiagram/Hw4ClassDiagram.png" />
+</div>
+
